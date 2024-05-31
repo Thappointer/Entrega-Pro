@@ -1,0 +1,34 @@
+./main.exe < sample-000.inp > output.txt
+diff -y output.txt sample-000.cor
+diff output.txt sample-000.cor
+
+        if(hasActiveHook()){
+          Item *paux1, *paux2;
+          pitem->next->prev = pitem->prev;
+          paux1 = pitem->next->next;
+          pitem->next->next = pitem;
+          paux2 = pitem->next;
+          pitem->next = paux1;
+          pitem->prev = paux2;
+          return *this;
+        }
+        else{
+          pitem = pitem->next;
+          return *this;
+        }
+
+
+        if(hasActiveHook()){
+          Item *paux1, *paux2;
+          pitem->prev->next = pitem->next;
+          paux1 = pitem->prev->prev;
+          pitem->prev->prev = pitem;
+          paux2 = pitem->prev;
+          pitem->prev = paux1;
+          pitem->next = paux2;
+          return *this;
+        }
+        else{
+          pitem = pitem->prev;
+          return *this;
+        }
