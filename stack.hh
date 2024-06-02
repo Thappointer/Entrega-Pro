@@ -137,8 +137,19 @@ public:
   //       Si la pila té només un element, llavors elimina aquest element.
   //       Si la pila no té cap element, llavors no canvia res.
   // Descomenteu les següents dues linies i implementeu el mètode:
-  // void pop2() {
-  // }
+     void pop2() {
+      if(ptopitem != NULL){
+        if(ptopitem->next != NULL){
+          Item *pdelete = ptopitem->next;
+          ptopitem->next = ptopitem->next->next;
+          delete pdelete;
+          _size--; 
+        }
+        else{
+          pop();
+        }
+      }
+     }
   
 };
 
