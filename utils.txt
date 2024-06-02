@@ -1,6 +1,6 @@
 ./main.exe < sample-000.inp > output.txt
-diff -y output.txt sample-000.cor
 diff output.txt sample-000.cor
+diff -y output.txt sample-000.cor
 
         if(hasActiveHook()){
           Item *paux1, *paux2;

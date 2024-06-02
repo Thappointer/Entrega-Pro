@@ -137,7 +137,12 @@ public:
   //       Si la pila té només un element, llavors retorna aquest element.
   // Descomenteu les següents dues linies i implementeu el mètode:
      T top2() {
-      return ptopitem->next->value;
+      if(ptopitem->next == NULL){
+        return ptopitem->value;
+      }
+      else{
+        return ptopitem->next->value;
+      }
      }
   
 };
