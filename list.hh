@@ -228,13 +228,19 @@ public:
       }
       else{
         if(hasActiveHook()){
-          Item *paux1, *paux2;
-          pitem->next->prev = pitem->prev;
-          paux1 = pitem->next->next;
-          pitem->next->next = pitem;
-          paux2 = pitem->next;
-          pitem->next = paux1;
-          pitem->prev = paux2;
+          if(pitem->next->next != NULL){ //Elimina el cas en que pitem == list.end()->prev
+            Item *p1, *p2, *p3, *p4;
+            p1 = pitem->prev; //Item previ a pitem i pitem->next
+            p2 = pitem;//Paràmetre implícit
+            p3 = pitem->next;//Iterador que operem en base al paràmetre implícit
+            p4 = p3->next;//Item posterior a pitem i pitem->next
+            p1->next = p3;
+            p3->prev = p1;
+            p3->next = p2;
+            p2->prev = p3;
+            p2->next = p4;
+            p4->prev = p2;
+          }
           return *this;
         }
         else{
@@ -276,8 +282,19 @@ public:
       }
       else{
         if(hasActiveHook()){
-          Item *p1, *p2, *p3, *p4;
-          
+          if(pitem->prev->prev != NULL){ //Elimina el cas en que pitem == list.begin()->next
+            Item *p1, *p2, *p3, *p4;
+            p1 = pitem->prev->prev; //Item previ a pitem i pitem->next
+            p2 = pitem->prev;//Iterador que operem en base al paràmetre implícit
+            p3 = pitem;//Paràmetre implícit
+            p4 = p3->next;////Item posterior a pitem i pitem->next
+            p1->next = p3;
+            p3->prev = p1;
+            p3->next = p2;
+            p2->prev = p3;  
+            p2->next = p4;
+            p4->prev = p2;
+          }  
           return *this;
         }
         else{
