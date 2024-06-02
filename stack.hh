@@ -136,8 +136,9 @@ public:
   // Post: Retorna l'element de la pila implícita que es troba en segona posició des del top.
   //       Si la pila té només un element, llavors retorna aquest element.
   // Descomenteu les següents dues linies i implementeu el mètode:
-  // T top2() {
-  // }
+     T top2() {
+      return ptopitem->next->value;
+     }
   
 };
 
